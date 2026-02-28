@@ -1,0 +1,15 @@
+# Robots.txt for bigbuleclaw.shop
+# https://bigbuleclaw.shop/
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private pages (if any)
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://bigbuleclaw.shop/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1
