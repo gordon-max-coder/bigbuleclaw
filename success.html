@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付成功 - LumeFlow</title>
+    <meta name="description" content="LumeFlow 支付成功 - 您的订单已完成，感谢您的购买！">
+    <meta name="robots" content="noindex, follow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans SC', sans-serif; background: #0a0a0f; color: #e5e5e5; }
+        .gradient-text { background: linear-gradient(135deg, #00f5d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .success-icon { animation: scaleIn 0.5s ease-out; }
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .fade-in { animation: fadeIn 0.8s ease-out 0.3s both; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="text-center px-6">
+        <!-- Success Icon -->
+        <div class="success-icon w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
+            <i class="fas fa-check text-5xl text-white"></i>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in">
+            <span class="gradient-text">支付成功！</span>
+        </h1>
+
+        <!-- Description -->
+        <p class="text-xl text-gray-400 mb-8 fade-in">
+            感谢您的购买，您的订单已完成
+        </p>
+
+        <!-- Order Info -->
+        <div class="bg-white/5 rounded-2xl p-6 max-w-md mx-auto mb-8 fade-in border border-white/10">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-gray-400">订单状态</span>
+                <span class="text-green-400 font-semibold"><i class="fas fa-check-circle mr-2"></i>已完成</span>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-gray-400">订单时间</span>
+                <span id="order-time" class="text-gray-300"></span>
+            </div>
+            <div class="flex items-center justify-between">
+                <span class="text-gray-400">订单编号</span>
+                <span id="order-id" class="text-gray-300 font-mono"></span>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+            <a href="/" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl font-semibold hover:opacity-90 transition-opacity">
+                返回首页
+            </a>
+            <a href="/pricing.html" class="px-8 py-3 bg-white/10 rounded-xl font-semibold hover:bg-white/20 transition-colors border border-white/20">
+                继续购买
+            </a>
+        </div>
+
+        <!-- Note -->
+        <p class="text-gray-500 text-sm mt-8 fade-in">
+            如有任何问题，请联系 <a href="mailto:support@bigbuleclaw.shop" class="text-cyan-400 hover:underline">support@bigbuleclaw.shop</a>
+        </p>
+    </div>
+
+    <script>
+        // 显示订单信息
+        document.getElementById('order-time').textContent = new Date().toLocaleString('zh-CN');
+        document.getElementById('order-id').textContent = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+
+        // 3秒后自动返回首页（可选）
+        // setTimeout(() => { window.location.href = '/'; }, 5000);
+    </script>
+</body>
+</html>
