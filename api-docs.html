@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 文档 - LumeFlow</title>
+    <meta name="description" content="LumeFlow API 文档 - 开发者文档，集成 AI 视频生成能力。">
+    <meta name="keywords" content="API文档,开发者文档,LumeFlow,AI视频生成">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="API 文档 - LumeFlow">
+    <meta property="og:description" content="LumeFlow API 文档 - 开发者文档，集成 AI 视频生成能力。">
+    <meta property="og:url" content="https://bigbuleclaw.shop/api-docs.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Monaco:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans SC', sans-serif; background: #0a0a0f; color: #e5e5e5; }
+        .gradient-text { background: linear-gradient(135deg, #00f5d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .code-block { background: #1a1a2e; border-radius: 8px; padding: 16px; overflow-x: auto; font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; }
+        .code-block code { color: #00f5d4; }
+        .code-block .comment { color: #6b7280; }
+        .code-block .string { color: #a5d6ff; }
+        .code-block .keyword { color: #c792ea; }
+        .code-block .function { color: #82aaff; }
+        .api-sidebar a { transition: all 0.3s ease; }
+        .api-sidebar a:hover, .api-sidebar a.active { background: rgba(0, 245, 212, 0.1); border-left-color: #00f5d4; }
+        .method-badge { font-size: 12px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+        .method-get { background: #10b981; color: white; }
+        .method-post { background: #3b82f6; color: white; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-wand-magic-sparkles text-white"></i>
+                </div>
+                <span class="text-xl font-bold gradient-text">LumeFlow</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="/" class="text-gray-300 hover:text-white transition-colors">返回首页</a>
+                <a href="/pricing.html" class="text-gray-300 hover:text-white transition-colors">购买积分</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20 flex">
+        <!-- Sidebar -->
+        <aside class="api-sidebar fixed left-0 top-20 bottom-0 w-64 bg-black/20 border-r border-white/10 overflow-y-auto p-6 hidden md:block">
+            <h3 class="text-lg font-semibold mb-4 text-white">API 端点</h3>
+            <ul class="space-y-2">
+                <li><a href="#authentication" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">认证</a></li>
+                <li><a href="#create-video" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">创建视频</a></li>
+                <li><a href="#get-status" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">查询状态</a></li>
+                <li><a href="#list-videos" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">视频列表</a></li>
+                <li><a href="#webhooks" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">Webhooks</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-64 p-8 max-w-4xl">
+            <h1 class="text-4xl font-bold mb-4">API 文档</h1>
+            <p class="text-gray-400 mb-8">使用 LumeFlow API 将 AI 视频生成能力集成到您的应用中。</p>
+
+            <!-- Base URL -->
+            <div class="glass rounded-2xl p-6 mb-8">
+                <h3 class="text-lg font-semibold mb-3">基础 URL</h3>
+                <div class="code-block">
+                    <code class="text-cyan-400">https://api.lumeflow.com/v1</code>
+                </div>
+            </div>
+
+            <!-- Authentication -->
+            <section id="authentication" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-key text-yellow-400"></i>
+                    认证
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <p class="text-gray-400 mb-4">所有 API 请求需要通过 API Key 进行认证：</p>
+                    <div class="code-block mb-4">
+                        <code>
+Authorization: Bearer YOUR_API_KEY
+                        </code>
+                    </div>
+                    <p class="text-gray-500 text-sm">您可以在个人中心的 API 设置页面获取 API Key。</p>
+                </div>
+            </section>
+
+            <!-- Create Video -->
+            <section id="create-video" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-video text-purple-400"></i>
+                    创建视频
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="method-badge method-post">POST</span>
+                        <code class="text-gray-300">/videos/generate</code>
+                    </div>
+                    <p class="text-gray-400 mb-4">创建一个新的视频生成任务。</p>
+
+                    <h4 class="font-semibold mb-2 text-white">请求参数：</h4>
+                    <div class="overflow-x-auto mb-4">
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="border-b border-white/10">
+                                    <th class="py-2 px-3 text-gray-400">参数</th>
+                                    <th class="py-2 px-3 text-gray-400">类型</th>
+                                    <th class="py-2 px-3 text-gray-400">必填</th>
+                                    <th class="py-2 px-3 text-gray-400">描述</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-white/5">
+                                    <td class="py-2 px-3 text-cyan-400">prompt</td>
+                                    <td class="py-2 px-3 text-gray-300">string</td>
+                                    <td class="py-2 px-3 text-gray-300">是</td>
+                                    <td class="py-2 px-3 text-gray-400">视频描述文本</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="py-2 px-3 text-cyan-400">mode</td>
+                                    <td class="py-2 px-3 text-gray-300">string</td>
+                                    <td class="py-2 px-3 text-gray-300">否</td>
+                                    <td class="py-2 px-3 text-gray-400">模式：text 或 image</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="py-2 px-3 text-cyan-400">duration</td>
+                                    <td class="py-2 px-3 text-gray-300">number</td>
+                                    <td class="py-2 px-3 text-gray-300">否</td>
+                                    <td class="py-2 px-3 text-gray-400">视频时长（秒），默认 3</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-3 text-cyan-400">style</td>
+                                    <td class="py-2 px-3 text-gray-300">string</td>
+                                    <td class="py-2 px-3 text-gray-300">否</td>
+                                    <td class="py-2 px-3 text-gray-400">视频风格</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="font-semibold mb-2 text-white">示例请求：</h4>
+                    <div class="code-block">
+                        <code>
+<span class="keyword">curl</span> -X POST https://api.lumeflow.com/v1/videos/generate \
+  -H <span class="string">"Authorization: Bearer YOUR_API_KEY"</span> \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "prompt": "一只可爱的猫咪在草地上奔跑",
+    "duration": 5,
+    "style": "realistic"
+  }'</span>
+                        </code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Get Status -->
+            <section id="get-status" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-sync text-blue-400"></i>
+                    查询状态
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="method-badge method-get">GET</span>
+                        <code class="text-gray-300">/videos/{video_id}/status</code>
+                    </div>
+                    <p class="text-gray-400 mb-4">查询视频生成状态。</p>
+
+                    <h4 class="font-semibold mb-2 text-white">响应示例：</h4>
+                    <div class="code-block">
+                        <code>
+{
+  <span class="string">"id"</span>: <span class="string">"vid_abc123"</span>,
+  <span class="string">"status"</span>: <span class="string">"completed"</span>,
+  <span class="string">"progress"</span>: <span class="string">100</span>,
+  <span class="string">"video_url"</span>: <span class="string">"https://cdn.lumeflow.com/videos/abc123.mp4"</span>,
+  <span class="string">"created_at"</span>: <span class="string">"2026-03-02T10:00:00Z"</span>
+}
+                        </code>
+                    </div>
+
+                    <h4 class="font-semibold mb-2 mt-4 text-white">状态说明：</h4>
+                    <ul class="list-disc list-inside text-gray-400 space-y-1">
+                        <li><code class="text-cyan-400">pending</code> - 等待处理</li>
+                        <li><code class="text-yellow-400">processing</code> - 生成中</li>
+                        <li><code class="text-green-400">completed</code> - 已完成</li>
+                        <li><code class="text-red-400">failed</code> - 生成失败</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- List Videos -->
+            <section id="list-videos" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-list text-green-400"></i>
+                    视频列表
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="method-badge method-get">GET</span>
+                        <code class="text-gray-300">/videos</code>
+                    </div>
+                    <p class="text-gray-400 mb-4">获取当前用户的所有视频。</p>
+
+                    <h4 class="font-semibold mb-2 text-white">查询参数：</h4>
+                    <ul class="list-disc list-inside text-gray-400 space-y-1 mb-4">
+                        <li><code class="text-cyan-400">limit</code> - 返回数量，默认 20</li>
+                        <li><code class="text-cyan-400">offset</code> - 偏移量，默认 0</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Webhooks -->
+            <section id="webhooks" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-bell text-orange-400"></i>
+                    Webhooks
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <p class="text-gray-400 mb-4">配置 Webhook 以接收视频生成完成的通知：</p>
+
+                    <h4 class="font-semibold mb-2 text-white">事件类型：</h4>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 mb-4">
+                        <li><code class="text-cyan-400">video.completed</code> - 视频生成完成</li>
+                        <li><code class="text-cyan-400">video.failed</code> - 视频生成失败</li>
+                    </ul>
+
+                    <h4 class="font-semibold mb-2 text-white">Webhook 载荷：</h4>
+                    <div class="code-block">
+                        <code>
+{
+  <span class="string">"event"</span>: <span class="string">"video.completed"</span>,
+  <span class="string">"video_id"</span>: <span class="string">"vid_abc123"</span>,
+  <span class="string">"video_url"</span>: <span class="string">"https://cdn.lumeflow.com/..."</span>,
+  <span class="string">"timestamp"</span>: <span class="string">"2026-03-02T10:30:00Z"</span>
+}
+                        </code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rate Limits -->
+            <section class="mb-12">
+                <div class="glass rounded-2xl p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                        <i class="fas fa-tachometer-alt text-cyan-400"></i>
+                        速率限制
+                    </h3>
+                    <p class="text-gray-400">
+                        免费用户：<span class="text-white">60 请求/分钟</span><br>
+                        付费用户：<span class="text-white">300 请求/分钟</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section>
+                <div class="glass rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold mb-3">需要帮助？</h3>
+                    <p class="text-gray-400 mb-4">如果您在集成过程中遇到任何问题，请联系我们的开发者支持团队。</p>
+                    <a href="/contact.html" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
+                        <i class="fas fa-envelope"></i>
+                        联系开发者支持
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2026 LumeFlow. All rights reserved.</p>
+            <div class="flex justify-center gap-6 mt-4">
+                <a href="/privacy.html" class="hover:text-white transition-colors">隐私政策</a>
+                <a href="/terms.html" class="hover:text-white transition-colors">服务条款</a>
+                <a href="/contact.html" class="hover:text-white transition-colors">联系我们</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
