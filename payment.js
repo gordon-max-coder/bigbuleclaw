@@ -97,7 +97,6 @@ window.createCheckout = async function(productKey, userId = null, options = {}) 
     user_id: userId,
     success_url: success_url || window.location.origin + '/success',
     cancel_url: cancel_url || window.location.origin + '/cancel',
-    test_mode: true, // 启用测试模式 - 需要在Creem后台开启Test Mode
   }
 
   console.log('Creating checkout with:', requestBody)
