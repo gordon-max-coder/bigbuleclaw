@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用文档 - LumeFlow</title>
+    <meta name="description" content="LumeFlow 使用文档 - 了解如何使用我们的AI视频生成平台创建精彩视频。">
+    <meta name="keywords" content="使用文档,教程,LumeFlow,AI视频生成">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="使用文档 - LumeFlow">
+    <meta property="og:description" content="LumeFlow 使用文档 - 了解如何使用我们的AI视频生成平台。">
+    <meta property="og:url" content="https://bigbuleclaw.shop/docs.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans SC', sans-serif; background: #0a0a0f; color: #e5e5e5; }
+        .gradient-text { background: linear-gradient(135deg, #00f5d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        .doc-sidebar a { transition: all 0.3s ease; }
+        .doc-sidebar a:hover, .doc-sidebar a.active { background: rgba(0, 245, 212, 0.1); border-left-color: #00f5d4; }
+        .code-block { background: #1a1a2e; border-radius: 8px; padding: 16px; overflow-x: auto; }
+        .code-block code { font-family: 'Monaco', 'Menlo', monospace; font-size: 14px; color: #00f5d4; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-wand-magic-sparkles text-white"></i>
+                </div>
+                <span class="text-xl font-bold gradient-text">LumeFlow</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="/" class="text-gray-300 hover:text-white transition-colors">返回首页</a>
+                <a href="/pricing.html" class="text-gray-300 hover:text-white transition-colors">购买积分</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20 flex">
+        <!-- Sidebar -->
+        <aside class="doc-sidebar fixed left-0 top-20 bottom-0 w-64 bg-black/20 border-r border-white/10 overflow-y-auto p-6 hidden md:block">
+            <h3 class="text-lg font-semibold mb-4 text-white">目录</h3>
+            <ul class="space-y-2">
+                <li><a href="#getting-started" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">快速开始</a></li>
+                <li><a href="#text-to-video" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">文字转视频</a></li>
+                <li><a href="#image-to-video" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">图片转视频</a></li>
+                <li><a href="#credits" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">积分说明</a></li>
+                <li><a href="#account" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">账户管理</a></li>
+                <li><a href="#faq" class="block py-2 px-4 rounded-l-lg border-l-2 border-transparent text-gray-400 hover:text-white">常见问题</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-64 p-8 max-w-4xl">
+            <h1 class="text-4xl font-bold mb-8">使用文档</h1>
+
+            <!-- Getting Started -->
+            <section id="getting-started" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-rocket text-cyan-400"></i>
+                    快速开始
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <p class="text-gray-400 mb-4">欢迎使用 LumeFlow！按照以下步骤快速创建您的第一个 AI 视频：</p>
+                    <ol class="list-decimal list-inside space-y-3 text-gray-300">
+                        <li>注册账户并登录</li>
+                        <li>在首页输入文字描述或上传图片</li>
+                        <li>选择视频风格和时长</li>
+                        <li>点击生成按钮，等待视频生成完成</li>
+                        <li>预览并下载您的视频</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Text to Video -->
+            <section id="text-to-video" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-font text-purple-400"></i>
+                    文字转视频
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <p class="text-gray-400 mb-4">使用文字描述生成视频，支持中英文输入：</p>
+                    <div class="code-block mb-4">
+                        <code>示例提示词：一只可爱的猫咪在草地上奔跑，阳光明媚，蝴蝶飞舞</code>
+                    </div>
+                    <h4 class="font-semibold mb-2 text-white">提示词技巧：</h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>描述具体场景和动作</li>
+                        <li>添加情绪和氛围描述</li>
+                        <li>指定画面风格（写实、动漫、水彩等）</li>
+                        <li>描述光线和色彩</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Image to Video -->
+            <section id="image-to-video" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-image text-green-400"></i>
+                    图片转视频
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <p class="text-gray-400 mb-4">上传静态图片，AI 将其转化为动态视频：</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>支持 JPG、PNG、WebP 格式</li>
+                        <li>最大文件大小：10MB</li>
+                        <li>推荐图片尺寸：16:9 或 9:16</li>
+                        <li>图片内容越丰富，生成效果越好</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Credits -->
+            <section id="credits" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-coins text-yellow-400"></i>
+                    积分说明
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <p class="text-gray-400 mb-4">积分是 LumeFlow 的虚拟货币，用于生成视频：</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="border-b border-white/10">
+                                    <th class="py-3 px-4 text-gray-400">视频时长</th>
+                                    <th class="py-3 px-4 text-gray-400">消耗积分</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-white/5">
+                                    <td class="py-3 px-4">3 秒</td>
+                                    <td class="py-3 px-4 text-cyan-400">10 积分</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="py-3 px-4">5 秒</td>
+                                    <td class="py-3 px-4 text-cyan-400">20 积分</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4">10 秒</td>
+                                    <td class="py-3 px-4 text-cyan-400">40 积分</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-gray-500 text-sm mt-4">* 实际消耗可能因视频复杂度而略有不同</p>
+                </div>
+            </section>
+
+            <!-- Account -->
+            <section id="account" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-user-circle text-blue-400"></i>
+                    账户管理
+                </h2>
+                <div class="glass rounded-2xl p-6">
+                    <p class="text-gray-400 mb-4">管理您的账户：</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>点击右上角头像查看账户信息</li>
+                        <li>查看积分余额和消费记录</li>
+                        <li>管理订阅和订单</li>
+                        <li>更新个人资料</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section id="faq" class="mb-12 scroll-mt-24">
+                <h2 class="text-2xl font-semibold mb-4 flex items-center gap-3">
+                    <i class="fas fa-question-circle text-orange-400"></i>
+                    常见问题
+                </h2>
+                <div class="glass rounded-2xl p-6 space-y-6">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-white">视频生成需要多长时间？</h4>
+                        <p class="text-gray-400">一般情况下，3-5秒视频需要 2-5 分钟生成，10秒视频可能需要 5-10 分钟。实际时间取决于服务器负载。</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-white">生成的视频可以商用吗？</h4>
+                        <p class="text-gray-400">是的，您拥有生成视频的完全版权，可以用于个人或商业用途。</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-white">如何查看积分消费记录？</h4>
+                        <p class="text-gray-400">登录后点击右上角头像，进入个人中心可以查看详细的积分消费记录。</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-white">支持哪些支付方式？</h4>
+                        <p class="text-gray-400">我们支持信用卡、PayPal 等主流支付方式，也可通过积分包月订阅。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section class="mb-12">
+                <div class="glass rounded-2xl p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20">
+                    <h3 class="text-xl font-semibold mb-3">需要更多帮助？</h3>
+                    <p class="text-gray-400 mb-4">如果您还有其他问题，欢迎联系我们的客服团队。</p>
+                    <a href="/contact.html" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
+                        <i class="fas fa-envelope"></i>
+                        联系 Support
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2026 LumeFlow. All rights reserved.</p>
+            <div class="flex justify-center gap-6 mt-4">
+                <a href="/privacy.html" class="hover:text-white transition-colors">隐私政策</a>
+                <a href="/terms.html" class="hover:text-white transition-colors">服务条款</a>
+                <a href="/contact.html" class="hover:text-white transition-colors">联系我们</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
